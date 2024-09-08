@@ -129,3 +129,26 @@ class Alumni(models.Model):
 }
 
 '''
+
+
+class Alumni(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    
+    # Many-to-Many relationship to represent alumni connections
+    alumni_network = models.ManyToManyField('self', related_name='connected_alumni', blank=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+    
+    '''
+# Create alumni instances
+alumni_a = Alumni.objects.create(first_name="John", last_name="Doe", email="john@example.com")
+alumni_b = Alumni.objects.create(first_name="Jane", last_name="Smith", email="jane@example.com")
+alumni_c = Alumni.objects.create(first_name="Alice", last_name="Johnson", email="alice@example.com")
+
+# Connect alumni in a network
+alumni_a.alumni_network.add(alumni_b, alumni_c)  # Alumni A is connected to Alumni B and C
+alumni_b.alumni_network.add(alumni_c) 
+    '''
