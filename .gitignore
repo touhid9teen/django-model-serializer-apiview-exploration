@@ -1,3 +1,87 @@
-venv/
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
 
-# git rm -r --cached venv/
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+wheels/
+share/python-wheels/
+*.egg
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+local_settings.py
+db.sqlite3  # Ignore SQLite database file if you're using it
+media/      # Ignore media files (optional)
+staticfiles/ # Ignore collected static files (optional)
+
+# PostgreSQL database dumps
+*.pgsql
+*.sql
+
+# PyCharm / VSCode project settings
+.idea/
+.vscode/
+
+# Environments and virtualenvs
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+.nox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# macOS-specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails for Gnome
+*.directory
+
+# Backup files
+*.bak
+*.swp
+*~

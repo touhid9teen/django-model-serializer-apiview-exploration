@@ -102,3 +102,25 @@ class AlumniOneToOneDetailAPIView(APIView):
 
         serializer = AlumniWithOneToOneSerializer(alumni)
         return Response(serializer.data)
+
+
+# ----------------------------view for indexing model
+
+
+# views.py
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.utils import timezone
+from datetime import timedelta
+from .models import Product
+from .serializers import ProductSerializer
+
+class RecentProductView(APIView):
+    def get(self, request, *args, **kwargs):
+        # Get products created in the last 7 days, leveraging the index on 'created_at'
+        last_week = timezone.now() - timedelta(days=7)
+        recent_products = Product.objects.filter(created_at__gte=last_week).order_by('created_at')
+
+        # Serialize the result
+        serializer = ProductSerializer(recent_products, many=True)
+        return Response(serializer.data)

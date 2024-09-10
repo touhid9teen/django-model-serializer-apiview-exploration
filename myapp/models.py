@@ -152,3 +152,29 @@ alumni_c = Alumni.objects.create(first_name="Alice", last_name="Johnson", email=
 alumni_a.alumni_network.add(alumni_b, alumni_c)  # Alumni A is connected to Alumni B and C
 alumni_b.alumni_network.add(alumni_c) 
     '''
+
+
+'''
+UUID (Universally Unique Identifier) is a 128-bit identifier that ensures 
+uniqueness across distributed systems. It is useful when you need globally 
+unique IDs that are unpredictable, such as for a public API.
+'''
+
+# ------------------------Indexing model
+
+from django.db import models
+import uuid
+
+class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['created_at']),  # Indexing the 'created_at' field
+        ]
+
+    def __str__(self):
+        return self.name
